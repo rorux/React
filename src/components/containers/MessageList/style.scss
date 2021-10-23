@@ -1,28 +1,5 @@
-body {
-  padding: 0;
-  margin: 0;
-  background: -moz-linear-gradient(
-    -45deg,
-    #183850 0,
-    #183850 25%,
-    #192c46 50%,
-    #22254c 75%,
-    #22254c 100%
-  );
-  background: -webkit-linear-gradient(
-    -45deg,
-    #183850 0,
-    #183850 25%,
-    #192c46 50%,
-    #22254c 75%,
-    #22254c 100%
-  );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
 #convo {
-  margin: 60px 0 30px;
+  margin: 30px 0 0;
 }
 
 ::-webkit-scrollbar {
@@ -140,12 +117,7 @@ body {
 /* Small screens */
 @media all and (max-width: 767px) {
   .chat-thread {
-    width: 90%;
-    height: 260px;
-  }
-
-  .chat-input {
-    width: 90%;
+    height: 300px;
   }
 
   .chat-window {
@@ -156,12 +128,7 @@ body {
 /* Medium and large screens */
 @media all and (min-width: 768px) {
   .chat-thread {
-    width: 50%;
     height: 400px;
-  }
-
-  .chat-input {
-    width: 50%;
   }
 
   .chat-window {
@@ -232,45 +199,4 @@ body {
 .credits a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.35);
-}
-
-$black: #000;
-$gray: #eeeeee;
-$green: #dcf8c6;
-$white: #fff;
-
-// Images
-
-$chat-background: url(https://brunolimawd.github.io/workshop-css-sass-ember/images/background-adbccee0708ae3b7a71d9652fb353299.png);
-$chat-button: url(https://brunolimawd.github.io/workshop-css-sass-ember/images/button-send.svg);
-
-// .chat-input
-
-.chat-input {
-  background: #5790bb;
-  //background: $gray;
-  box-sizing: border-box;
-  display: flex;
-  flex: 1 0 60px;
-  padding: 10px 6px 10px 16px;
-  margin: auto;
-  border-radius: 20px;
-}
-
-.chat-input__message {
-  border: none;
-  border-radius: 20px;
-  flex: 1 0 auto;
-  padding: 10px 20px;
-  outline: none;
-  background-color: #ccc;
-}
-
-.chat-input__send {
-  border: none;
-  background: $chat-button no-repeat 50% 50%;
-  cursor: pointer;
-  flex: 0 0 45px;
-  padding: 0 10px;
-  text-indent: -999em;
 }

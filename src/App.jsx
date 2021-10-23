@@ -1,5 +1,21 @@
 import { useState, useEffect, useRef } from "react";
+import ChatList from "./components/containers/ChatList";
 import MessageList from "./components/containers/MessageList";
+import MsgInput from "./components/MsgInput";
+import "./styles/main.scss";
+
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#22254c",
+    },
+    secondary: {
+      main: "#CECECE",
+    },
+  },
+});
 
 function App() {
   const [messageList, setMessageList] = useState([]);
@@ -34,7 +50,17 @@ function App() {
   }, [messageList]);
 
   return (
-    <MessageList messages={messageList} newMessage={addMessage}></MessageList>
+    <ThemeProvider theme={theme}>
+      <div className="wrap">
+        <div className="chat-list-wrap">
+          <ChatList />
+        </div>
+        <div className="messages-input-wrap">
+          <MessageList messages={messageList}></MessageList>
+          <MsgInput submit={addMessage} messageList={messageList} />
+        </div>
+      </div>
+    </ThemeProvider>
   );
 }
 
