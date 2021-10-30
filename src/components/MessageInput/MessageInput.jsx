@@ -19,7 +19,7 @@ const MyButton = styled(Button)({
   },
 });
 
-function MsgInput({ submit, messageList }) {
+function MessageInput({ submit, messageList }) {
   const [text, setText] = useState("");
 
   const theme = useTheme();
@@ -76,4 +76,4 @@ function MsgInput({ submit, messageList }) {
   );
 }
 
-export default MsgInput;
+export default MessageInput;
