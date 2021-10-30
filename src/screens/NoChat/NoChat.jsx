@@ -1,18 +1,5 @@
-import { Button } from "@material-ui/core";
-import { styled } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-
-const MyButton = styled(Button)({
-  background: "ForestGreen",
-  border: 0,
-  borderRadius: 3,
-  color: "white",
-  boxShadow: "none",
-  "&:hover": {
-    background: "SeaGreen",
-    boxShadow: "none",
-  },
-});
+import { GreenButton } from "../../components/Buttons";
 
 function NoChat() {
   return (
@@ -20,7 +7,7 @@ function NoChat() {
       <h1>Чат не найден..</h1>
 
       <Link to="/chats">
-        <MyButton>Чаты</MyButton>
+        <GreenButton>Чаты</GreenButton>
       </Link>
     </div>
   );

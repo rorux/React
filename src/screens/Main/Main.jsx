@@ -1,28 +1,15 @@
-import { Button } from "@material-ui/core";
-import { styled } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-
-const MyButton = styled(Button)({
-  background: "ForestGreen",
-  border: 0,
-  borderRadius: 3,
-  color: "white",
-  boxShadow: "none",
-  "&:hover": {
-    background: "SeaGreen",
-    boxShadow: "none",
-  },
-});
+import { GreenButton, BlueButton } from "../../components/Buttons";
 
 function Main() {
   return (
     <div className="wrap-main">
       <Link to="/profile">
-        <MyButton>Профиль</MyButton>
+        <BlueButton>Профиль</BlueButton>
       </Link>
 
       <Link to="/chats">
-        <MyButton>Чаты</MyButton>
+        <GreenButton>Чаты</GreenButton>
       </Link>
     </div>
   );

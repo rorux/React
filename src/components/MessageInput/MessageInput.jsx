@@ -1,23 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { TextField, Button, useTheme } from "@material-ui/core";
-import { styled } from "@material-ui/core/styles";
-import "./style.scss";
+import { TextField, useTheme } from "@material-ui/core";
 import { SendOutlined } from "@material-ui/icons";
-
-const MyButton = styled(Button)({
-  background: "ForestGreen",
-  border: 0,
-  borderRadius: 3,
-  color: "white",
-  marginLeft: 10,
-  marginRight: 5,
-  paddingLeft: -15,
-  boxShadow: "none",
-  "&:hover": {
-    background: "SeaGreen",
-    boxShadow: "none",
-  },
-});
+import { GreenButton } from "../Buttons";
+import "./style.scss";
 
 function MessageInput({ submit, messageList }) {
   const [text, setText] = useState("");
@@ -65,13 +50,14 @@ function MessageInput({ submit, messageList }) {
         }}
         inputRef={ref}
       />
-      <MyButton
+      <GreenButton
         variant="contained"
         size="small"
         endIcon={<SendOutlined />}
         onClick={sendMessage}
         disabled={!text}
-      ></MyButton>
+        style={{ marginLeft: 10, marginRight: 8 }}
+      ></GreenButton>
     </div>
   );
 }

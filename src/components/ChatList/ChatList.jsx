@@ -2,10 +2,11 @@ import { React, useState } from "react";
 import { makeStyles, styled } from "@material-ui/core/styles";
 import { useParams } from "react-router-dom";
 import List from "@material-ui/core/List";
-import { Button, ListSubheader } from "@material-ui/core";
+import { ListSubheader } from "@material-ui/core";
 import ChatItem from "../ChatItem";
-import "./style.scss";
+import { BlueButton } from "../Buttons";
 import Modal from "../Modal";
+import "./style.scss";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,18 +16,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
   },
 }));
-
-const MyButton = styled(Button)({
-  background: "ForestGreen",
-  border: 0,
-  borderRadius: 3,
-  color: "white",
-  boxShadow: "none",
-  "&:hover": {
-    background: "SeaGreen",
-    boxShadow: "none",
-  },
-});
 
 const MyListSubheader = styled(ListSubheader)({
   background: "DarkCyan",
@@ -86,9 +75,9 @@ function ChatList({ chatList, setChatList }) {
           ))}
         </List>
       </div>
-      <MyButton fullWidth onClick={handleClickOpen}>
+      <BlueButton fullWidth onClick={handleClickOpen}>
         Добавить чат
-      </MyButton>
+      </BlueButton>
     </div>
   );
 }

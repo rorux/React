@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { Router } from "./router/Router";
+import { Provider } from "react-redux";
+import { store } from "./store";
 import "./index.css";
 
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
@@ -20,11 +22,13 @@ const theme = createTheme({
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <Router />
-      </ThemeProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <Router />
+        </ThemeProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
