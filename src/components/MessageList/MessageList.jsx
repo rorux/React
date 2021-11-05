@@ -1,12 +1,12 @@
 import "./style.scss";
 import Message from "../Message";
 
-function MessageList({ messages }) {
+function MessageList({ messageList }) {
   return (
     <div id="convo" data-from="Sonu Joshi">
       <ul className="chat-thread">
-        {messages.map((message) => (
-          <Message message={message} key={message.id} />
+        {messageList.map((message) => (
+          <Message message={message} key={message.messageId} />
         ))}
       </ul>
     </div>

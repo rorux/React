@@ -6,14 +6,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { addChatAction } from "../../store/chats/actions";
+import { useDispatch } from "react-redux";
 
-export default function Modal({
-  openModal,
-  handleClose,
-  chatList,
-  setChatList,
-}) {
+export default function Modal({ openModal, handleClose }) {
   const [text, setText] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     if (event.keyCode !== 13) {
@@ -24,17 +22,9 @@ export default function Modal({
   };
 
   const addChat = () => {
-    if (text) {
-      const chatListChange = { ...chatList };
-      const lastId = Object.keys(chatListChange).slice(-1)[0];
-      const lastIdNum = +lastId.replace("id", "");
-      const newIdNum = lastIdNum + 1;
-      const newId = "id" + newIdNum;
-      chatListChange[newId] = { name: text };
-      setChatList(chatListChange);
-      handleClose();
-      setText("");
-    }
+    dispatch(addChatAction(text));
+    handleClose();
+    setText("");
   };
 
   return (
@@ -63,7 +53,7 @@ export default function Modal({
           <Button onClick={handleClose} color="primary">
             Отмена
           </Button>
-          <Button onClick={(handleClose, addChat)} color="primary">
+          <Button onClick={addChat} color="primary" disabled={!text}>
             Создать
           </Button>
         </DialogActions>

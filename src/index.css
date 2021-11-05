@@ -70,6 +70,10 @@ code {
   color: #bbb;
 }
 
+.welcome {
+  color: Goldenrod;
+}
+
 @media all and (max-width: 767px) {
 }
 

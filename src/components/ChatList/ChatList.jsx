@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import List from "@material-ui/core/List";
 import { ListSubheader } from "@material-ui/core";
 import ChatItem from "../ChatItem";
-import { BlueButton } from "../Buttons";
-import Modal from "../Modal";
 import "./style.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,36 +23,20 @@ const MyListSubheader = styled(ListSubheader)({
   borderTopRightRadius: 5,
 });
 
-function ChatList({ chatList, setChatList }) {
-  const classes = useStyles();
-
+function ChatList({ chatList }) {
   const { chatId } = useParams();
   const [selectedChatId, setSelectedChatId] = useState(
     chatId ? chatId : Object.keys(chatList)[0]
   );
 
+  const classes = useStyles();
+
   const handleListItemClick = (event, id) => {
     setSelectedChatId(id);
   };
 
-  const [openModal, setOpenModal] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpenModal(true);
-  };
-
-  const handleClose = () => {
-    setOpenModal(false);
-  };
-
   return (
     <div>
-      <Modal
-        openModal={openModal}
-        handleClose={handleClose}
-        chatList={chatList}
-        setChatList={setChatList}
-      />
       <div className={classes.root} style={{ marginBottom: 10 }}>
         <List
           component="nav"
@@ -69,15 +51,10 @@ function ChatList({ chatList, setChatList }) {
               onListItemClick={handleListItemClick}
               selectedChatId={selectedChatId}
               key={i}
-              chatList={chatList}
-              setChatList={setChatList}
             />
           ))}
         </List>
       </div>
-      <BlueButton fullWidth onClick={handleClickOpen}>
-        Добавить чат
-      </BlueButton>
     </div>
   );
 }

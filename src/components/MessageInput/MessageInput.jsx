@@ -2,10 +2,15 @@ import { useState, useRef, useEffect } from "react";
 import { TextField, useTheme } from "@material-ui/core";
 import { SendOutlined } from "@material-ui/icons";
 import { GreenButton } from "../Buttons";
+import { useSelector, useDispatch } from "react-redux";
+import { profileSelector } from "../../store/profile/selectors";
+import { addMessageAction } from "../../store/messages/actions";
 import "./style.scss";
 
-function MessageInput({ submit, messageList }) {
+function MessageInput({ messageList, chatId }) {
   const [text, setText] = useState("");
+  const { userName } = useSelector(profileSelector);
+  const dispatch = useDispatch();
 
   const theme = useTheme();
 
@@ -23,14 +28,14 @@ function MessageInput({ submit, messageList }) {
   };
 
   const sendMessage = () => {
-    if (text) {
-      submit({
-        id: Date.now(),
-        author: "Jack",
+    dispatch(
+      addMessageAction({
+        chatId: chatId,
+        author: userName,
         text: text,
-      });
-      setText("");
-    }
+      })
+    );
+    setText("");
   };
 
   return (

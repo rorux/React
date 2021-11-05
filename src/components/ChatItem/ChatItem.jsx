@@ -6,23 +6,14 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
+import { delChatAction } from "../../store/chats/actions";
+import { useDispatch } from "react-redux";
 import "./style.scss";
 
-function ChatItem({
-  id,
-  chat,
-  selectedChatId,
-  onListItemClick,
-  chatList,
-  setChatList,
-}) {
+function ChatItem({ id, chat, selectedChatId, onListItemClick }) {
+  const dispatch = useDispatch();
   const deleteChat = () => {
-    const newChatList = {};
-    Object.keys({ ...chatList }).forEach((idChatFullList) => {
-      if (idChatFullList !== id)
-        newChatList[idChatFullList] = chatList[idChatFullList];
-    });
-    setChatList(newChatList);
+    dispatch(delChatAction(id));
   };
   return (
     <ListItem

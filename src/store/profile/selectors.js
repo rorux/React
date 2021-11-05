@@ -1,1 +1,1 @@
-export const profileSelector = (store) => store;
+export const profileSelector = (store) => store.profile;

@@ -1,6 +1,7 @@
 .chat-list-wrap a {
   text-decoration: none;
   color: #444;
+  margin: 0 !important;
 
   &:hover {
     color: lightslategrey;
