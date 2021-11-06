@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { TextField, useTheme } from "@material-ui/core";
 import { SendOutlined } from "@material-ui/icons";
 import { GreenButton } from "../Buttons";
 import { useSelector, useDispatch } from "react-redux";
 import { profileSelector } from "../../store/profile/selectors";
-import { addMessageAction } from "../../store/messages/actions";
+import { addMessageActionWithThunk } from "../../store/messages/actions";
 import "./style.scss";
 
 function MessageInput({ messageList, chatId }) {
@@ -27,16 +27,16 @@ function MessageInput({ messageList, chatId }) {
     }
   };
 
-  const sendMessage = () => {
+  const sendMessage = useCallback(() => {
     dispatch(
-      addMessageAction({
+      addMessageActionWithThunk({
         chatId: chatId,
         author: userName,
         text: text,
       })
     );
     setText("");
-  };
+  }, [chatId, userName, text, dispatch]);
 
   return (
     <div className="chat-input">

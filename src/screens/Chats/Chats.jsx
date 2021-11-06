@@ -31,29 +31,6 @@ function Chats() {
 
   messageList = messageList[chatId] ?? [];
 
-  /* const isMounted = useRef(false);
-  useEffect(() => {
-    if (isMounted.current) {
-      const lastMessage = messageList[messageList.length - 1];
-      if (lastMessage.author !== "Bot") {
-        const deferredBot = setTimeout(
-          () =>
-            dispatch(
-              addMessageAction({
-                chatId: chatId,
-                author: "Bot",
-                text: "Hello! I'm Bot",
-              })
-            ),
-          1500
-        );
-        return () => clearTimeout(deferredBot);
-      }
-    } else {
-      isMounted.current = true;
-    }
-  }, [messageList, dispatch, chatId]); */
-
   const handleClickOpen = () => {
     setOpenModal(true);
   };

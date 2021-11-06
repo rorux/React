@@ -4,10 +4,12 @@ import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { Router } from "./router/Router";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { persistor, store } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 import "./index.css";
 
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+import { CircularProgress } from "@material-ui/core";
 
 const theme = createTheme({
   palette: {
@@ -23,11 +25,13 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <Router />
-        </ThemeProvider>
-      </BrowserRouter>
+      <PersistGate persistor={persistor} loading={<CircularProgress />}>
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <Router />
+          </ThemeProvider>
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
