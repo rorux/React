@@ -5,8 +5,7 @@ import Profile from "../screens/Profile";
 import NoChat from "../screens/NoChat";
 import NotFound from "../screens/NotFound";
 import { ROUTES } from "./constants";
-/* import { useDispatch } from "react-redux";
-import { addChatAction } from "../store/chats/actions"; */
+import Chess from "../screens/Chess/Chess";
 
 export const Router = () => {
   return (
@@ -19,6 +18,9 @@ export const Router = () => {
       </Route>
       <Route exact path={ROUTES.PROFILE}>
         <Profile />
+      </Route>
+      <Route exact path={ROUTES.CHESS}>
+        <Chess />
       </Route>
       <Route exact path={ROUTES.NOCHAT}>
         <NoChat />

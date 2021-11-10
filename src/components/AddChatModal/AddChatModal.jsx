@@ -9,7 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { addChatAction } from "../../store/chats/actions";
 import { useDispatch } from "react-redux";
 
-export default function Modal({ openModal, handleClose }) {
+export default function AddChatModal({ openModal, handleClose }) {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
 

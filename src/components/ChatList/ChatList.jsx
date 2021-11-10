@@ -25,9 +25,7 @@ const MyListSubheader = styled(ListSubheader)({
 
 function ChatList({ chatList }) {
   const { chatId } = useParams();
-  const [selectedChatId, setSelectedChatId] = useState(
-    chatId ? chatId : Object.keys(chatList)[0]
-  );
+  const [selectedChatId, setSelectedChatId] = useState(chatId);
 
   const classes = useStyles();
 
