@@ -6,14 +6,14 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
-import { delChatAction } from "../../store/chats/actions";
+import { deleteChatWithFirebase } from "../../store/chats/actions";
 import { useDispatch } from "react-redux";
 import "./style.scss";
 
 function ChatItem({ id, chat, selectedChatId, onListItemClick }) {
   const dispatch = useDispatch();
   const deleteChat = () => {
-    dispatch(delChatAction(id));
+    dispatch(deleteChatWithFirebase(id));
   };
   return (
     <ListItem

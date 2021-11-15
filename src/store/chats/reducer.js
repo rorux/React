@@ -1,12 +1,12 @@
-import { ADD_CHAT_ACTION, DELETE_CHAT_ACTION } from "./constants";
+import {
+  ADD_CHAT_ACTION,
+  DELETE_CHAT_ACTION,
+  CHANGE_CHATS_ACTION,
+} from "./constants";
 import { v1 as uuid } from "uuid";
 
 const initialState = {
-  chatList: {
-    id1: { name: "Chat1" },
-    id2: { name: "Chat2" },
-    id3: { name: "Chat3" },
-  },
+  chatList: {},
 };
 
 export const chatsReducer = (store = initialState, action) => {
@@ -25,6 +25,14 @@ export const chatsReducer = (store = initialState, action) => {
         ...store,
         chatList: {
           ...restChats,
+        },
+      };
+    case CHANGE_CHATS_ACTION:
+      return {
+        ...store,
+        chatList: {
+          ...store.chatList,
+          [action.payload.chatId]: { name: action.payload.name },
         },
       };
     default: {

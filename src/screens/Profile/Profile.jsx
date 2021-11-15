@@ -1,8 +1,9 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   toggleShowNameAction,
-  changeUserNameAction,
+  setNameWithFirebase,
+  watchUserName,
 } from "../../store/profile/actions";
 import { profileSelector } from "../../store/profile/selectors";
 import { GreenButton, BlueButton } from "../../components/Buttons";
@@ -24,8 +25,12 @@ function Profile() {
   }, []);
 
   const setName = () => {
-    dispatch(changeUserNameAction(value));
+    dispatch(setNameWithFirebase(value));
   };
+
+  useEffect(() => {
+    dispatch(watchUserName());
+  }, [dispatch]);
 
   return (
     <div className="wrap-main">

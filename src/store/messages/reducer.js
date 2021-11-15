@@ -1,33 +1,12 @@
-import { ADD_MESSAGE_ACTION } from "./constants";
+import {
+  ADD_MESSAGE_ACTION,
+  CHANGE_MESSAGES_ACTION,
+  DELETE_MESSAGES_ACTION,
+} from "./constants";
 import { v1 as uuid } from "uuid";
 
 const initialState = {
-  messageList: {
-    id1: [
-      {
-        messageId: 1,
-        author: "Иван",
-        text: "Привет!",
-      },
-      {
-        messageId: 2,
-        author: "Андрей",
-        text: "Привет! Как дела?",
-      },
-    ],
-    id2: [
-      {
-        messageId: 1,
-        author: "Максим",
-        text: "Сегодня во сколько планерка?",
-      },
-      {
-        messageId: 2,
-        author: "Сергей",
-        text: "В 11:00",
-      },
-    ],
-  },
+  messageList: {},
 };
 
 export const messagesReducer = (store = initialState, action) => {
@@ -43,6 +22,23 @@ export const messagesReducer = (store = initialState, action) => {
             ...currentChatMessages,
             { text, author, messageId: uuid() },
           ],
+        },
+      };
+    case DELETE_MESSAGES_ACTION:
+      const { [action.payload]: chatToDelete, ...restChats } =
+        store.messageList;
+      return {
+        ...store,
+        messageList: {
+          ...restChats,
+        },
+      };
+    case CHANGE_MESSAGES_ACTION:
+      return {
+        ...store,
+        messageList: {
+          ...store.messageList,
+          [action.payload.chatId]: action.payload.messages,
         },
       };
     default: {

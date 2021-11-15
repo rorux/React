@@ -1,38 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import { Router } from "./router/Router";
-import { Provider } from "react-redux";
-import { persistor, store } from "./store";
-import { PersistGate } from "redux-persist/integration/react";
+import App from "./components/App/App";
+import "./services/firebase";
 import "./index.css";
-
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
-import { CircularProgress } from "@material-ui/core";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#22254c",
-    },
-    secondary: {
-      main: "#CECECE",
-    },
-  },
-});
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistor} loading={<CircularProgress />}>
-        <BrowserRouter>
-          <ThemeProvider theme={theme}>
-            <Router />
-          </ThemeProvider>
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

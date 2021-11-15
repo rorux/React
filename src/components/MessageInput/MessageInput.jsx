@@ -4,10 +4,11 @@ import { SendOutlined } from "@material-ui/icons";
 import { GreenButton } from "../Buttons";
 import { useSelector, useDispatch } from "react-redux";
 import { profileSelector } from "../../store/profile/selectors";
-import { addMessageActionWithThunk } from "../../store/messages/actions";
+import { addMessageWithFirebase } from "../../store/messages/actions";
+import { v1 as uuid } from "uuid";
 import "./style.scss";
 
-function MessageInput({ messageList, chatId }) {
+function MessageInput({ chatId }) {
   const [text, setText] = useState("");
   const { userName } = useSelector(profileSelector);
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function MessageInput({ messageList, chatId }) {
   const ref = useRef(undefined);
   useEffect(() => {
     ref.current?.focus();
-  }, [messageList]);
+  }, []);
 
   const handleChange = (event) => {
     if (event.keyCode !== 13) {
@@ -29,7 +30,8 @@ function MessageInput({ messageList, chatId }) {
 
   const sendMessage = useCallback(() => {
     dispatch(
-      addMessageActionWithThunk({
+      addMessageWithFirebase({
+        messageId: uuid(),
         chatId: chatId,
         author: userName,
         text: text,

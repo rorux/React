@@ -6,7 +6,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { addChatAction } from "../../store/chats/actions";
+import { addChatWithFirebase } from "../../store/chats/actions";
 import { useDispatch } from "react-redux";
 
 export default function AddChatModal({ openModal, handleClose }) {
@@ -22,7 +22,7 @@ export default function AddChatModal({ openModal, handleClose }) {
   };
 
   const addChat = () => {
-    dispatch(addChatAction(text));
+    dispatch(addChatWithFirebase(text));
     handleClose();
     setText("");
   };

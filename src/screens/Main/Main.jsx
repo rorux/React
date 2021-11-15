@@ -5,12 +5,12 @@ import { ROUTES } from "../../router/constants";
 function Main() {
   return (
     <div className="wrap-main">
-      <Link to={ROUTES.PROFILE}>
-        <BlueButton>Профиль</BlueButton>
+      <Link to={ROUTES.SIGNUP}>
+        <BlueButton>Регистрация</BlueButton>
       </Link>
 
-      <Link to={ROUTES.CHATS}>
-        <GreenButton>Чаты</GreenButton>
+      <Link to={ROUTES.LOGIN}>
+        <GreenButton>Авторизация</GreenButton>
       </Link>
     </div>
   );
