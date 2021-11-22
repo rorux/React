@@ -34,7 +34,7 @@ function ChatList({ chatList }) {
   };
 
   return (
-    <div>
+    <>
       <div className={classes.root} style={{ marginBottom: 10 }}>
         <List
           component="nav"
@@ -53,7 +53,7 @@ function ChatList({ chatList }) {
           ))}
         </List>
       </div>
-    </div>
+    </>
   );
 }
 
